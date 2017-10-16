@@ -38,7 +38,7 @@ Accur("HIGH")
 
 ### Ex. 今天要先設定速度、加速度、減速度再去做動作
 
-```
+```lua
 -- MovP 版本
 AccJ(90)
 DecJ(80)
@@ -48,7 +48,7 @@ MovP("MyFirstPoint")
 
 ### Ex. 今天要先設定速度、加速度、減速度再去做動作
 
-```
+```lua
 -- MovL 版本
 AccL(25000)
 DecL(20000)
@@ -58,7 +58,7 @@ MovL("MyFirstPoint")
 
 ## 點位指令
 
-```
+```lua
 -- ReadPoint 讀取點位
 PostionX=ReadPoint(1001,"X") -- 讀取 Index 1001 點位的 X 座標值
 PostionY=ReadPoint(1001,"Y") -- 讀取 Index 1001 點位的 Y 座標值
@@ -72,7 +72,7 @@ PostionRZ=ReadPoint("P1","RZ") -- 讀取 P1 點位的 RZ 座標值
 PostionH1=ReadPoint("P1","H") -- 讀取 P1 點位的手系資訊
 ```
 
-```
+```lua
 -- WritePoint 寫入點位
 WritePoint(1001,"X",300) -- 對 Index 1001 點位的 X 座標值輸入 300毫米(mm)
 WritePoint(1001,"Y",50) -- 對 Index 1001 點位的 Y 座標值輸入 50毫米(mm)
@@ -98,7 +98,7 @@ WritePoint("P2","H",1) -- 對 P2 點位的手系寫入 1
 
 ### ex. Read 點位 跟 write 點位的綜合應用範例
 
-```
+```lua
 -- 假設 FirstPoint 的 X,Y,Z 分別是 100, 50, 80
 -- 假設 SecondPoint 的 X,Y,Z 分別是 0, 0, 0
 
@@ -121,7 +121,7 @@ WritePoint("SecondPoint", "Z", PostionZ2) -- 對 SecondPoint 點位的 Z 座標�
 
 ### EX. MODBUS 跟 read / write point 的綜合應用
 
-```
+```lua
 -- 模擬 MS 從 DMV 讀取目標物座標
 -- 使用 DO 夾取目標物
 -- 移動到目標座標放置目標物
@@ -148,7 +148,7 @@ DO(1, "OFF")
 
 ### EX. 判斷 IO 之後去繞圈切割
 
-```
+```lua
 -- 判斷 IO 之後去繞圈切割
 while true then
   if DI(1) == "ON" then
@@ -168,7 +168,7 @@ end
 
 ## 運動指令
 
-```
+```lua
 -- MovJ 軸移動
 MovJ(4,180)
 MovJ(4,180,50) -- 第四軸以 50% 的速度移動到正 180 度的位置
@@ -227,7 +227,7 @@ Lift("P0",45,10,90) –以P0點為參考點,移動到以該參考點位置上升
 
 ## IO 通訊
 
-```
+```lua
 -- 輸入
 DI(n)
 -- 輸出
@@ -248,7 +248,7 @@ DO (1,"ON",1) --Let first DO On for one second
 
 ## Modbus 通訊
 
-```
+```lua
 -- ReadModbus 此為與外部構通指令,用於讀取記憶體位置的值,可讀取的記憶位址為 0x1000~0x1FFF,總共 4096 個 word 可使用,以 Double word 的長度來做讀取資料時,欲讀取的記憶體位址須為雙數,才可以做讀 取的 動作
 -- WriteModbus 此為與外部構通指令,用於寫入記憶體位置的值,可寫入的記憶位址為 0x1000~0x1FFF,總共 4096 個 word 可使用,以 Double word 的長度來做寫入資料時,欲寫入的記憶體位址須為雙數,才可以做寫 入的 動作
 
@@ -270,7 +270,7 @@ readModbus_0x1F00=ReadModbus(0x1F00,"DW")
 
 ## 註解
 
-```
+```lua
 -- 這些程式都不會執行，只是給人看的
 -- 這些程式都不會執行，只是給人看的
 
@@ -281,7 +281,7 @@ MovP(1001) -- MovP 會執行，但是這段文字不會被執行
 
 ## IF...ELSE
 
-```
+```lua
 if DI(1) == "ON" then
   -- 如果 DI1 是 ON 的話做這些事
 else
@@ -291,7 +291,7 @@ end
 
 ## IF..ELSEIF..ELSE
 
-```
+```lua
 -- 一般邏輯判斷
 if DI(1) == "ON" then
   -- 如果 DI1 是 ON 的話做這些事
@@ -320,7 +320,7 @@ end
 
 ## While 迴圈
 
-```
+```lua
 a=10
 while( a < 20 ) do -- 當 a 小於 20 時執行
    MovPR(30, "X")
@@ -340,7 +340,7 @@ end
 
 [http://www2.kimicat.com/lua%E6%95%99%E5%AD%B8—%E8%BF%B4%E5%9C%88](http://www2.kimicat.com/lua%E6%95%99%E5%AD%B8%E2%80%94%E8%BF%B4%E5%9C%88)
 
-```
+```lua
 -- for i = 1, 10 的意思是說，建立一個暫時性的變數 i，
 -- 它的值從 1 開始，一直加 1 直到 10，重覆執行 do 和 end 之間的程式。
 -- 所以，一開始 i 的值是 1，執行 print(i)，接著 i 的值變成 2，再執行 print(i)，
@@ -370,7 +370,7 @@ http://www.runoob.com/lua/lua-tutorial.html
 
 ## 1.快速ㄇ字往返
 
-```
+```lua
 -- 要先在點位配置配置四個點位: 1001, 1002, 1003, 1004
 -- 以此案例：
 -- 1001(50, -100, -100)
@@ -399,7 +399,7 @@ end
 
 ## 2.DMV 四點定位取物
 
-```
+```lua
 RobotServoOff()
 RobotServoOn()
 
@@ -456,7 +456,7 @@ end
 ## 3.DMV 四點定位取物 ( SMAC USB )
 
 [Image: https://quip.com/-/blob/TMZAAA8imWo/7k_wsu-4hBeiapIt0PG75A]
-```
+```lua
 SpdJ(95.0)
 AccJ(95.0)
 DecJ(95.0)
