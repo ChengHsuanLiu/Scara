@@ -17,7 +17,7 @@
 ## 基本設定
 
 [Image: https://quip.com/-/blob/TMZAAA8imWo/Dz0Rgua8yg7Aai8i9zMiOw]
-```
+```lua
 -- 影響 MovP, MovJ 的動作指令
 AccJ(100) -- 加速度百分比,可輸入範圍為 1~100,不可輸入浮點數
 DecJ(100) -- 減速度百分比,可輸入範圍為 1~100,不可輸入浮點數
